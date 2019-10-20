@@ -1,8 +1,19 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
 
 import { CardList } from './components/card-list/card-list.component';
 import { SearchBox } from './components/search-box/search-box.component';
 import "./App.css";
+
+const AppContainer = styled.div`
+    text-align: center;  
+`;
+
+const Heading = styled.h1`
+font-family: 'Bigelow Rules';
+font-size: 72px;
+color: #0ccac4;
+`;
 
 class App extends Component {
   constructor() {
@@ -12,6 +23,7 @@ class App extends Component {
       searchField: ''
     };
   }
+  
   componentDidMount() {
       fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
@@ -25,10 +37,11 @@ class App extends Component {
     const { monsters, searchField } = this.state;
     const filteredMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(searchField.toLowerCase()));
     return (
-      <div>
+      <AppContainer>
+        <Heading> Monsters Rolodex</Heading>
         <SearchBox placeholder='search monsters' handleChange={this.handleChange} />
         <CardList monsters={filteredMonsters} />
-      </div>
+      </AppContainer>
     );
   }
 }
