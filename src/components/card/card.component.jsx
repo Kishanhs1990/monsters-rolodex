@@ -14,12 +14,11 @@ const CardContainer = styled.div`
     transform: translateZ(0);
     transition: transform 0.25s ease-out;
     text-align: center;
-`
-  
-//   .card-container:hover {
-//     transform: scale(1.05);
-//   }
-  
+    
+    :hover {
+    transform: scale(1.05);
+}
+`  
 
 export const Card = props => {
     return(
